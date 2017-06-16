@@ -1,0 +1,13 @@
+<script src="<%=host%>xheditor/jquery/jquery-1.11.2.min.js" charset="utf-8"></script>
+<script src="<%=host%>xheditor/xheditor-1.2.2.min.js" charset="utf-8"></script>
+<script src="<%=host%>xheditor/xheditor_lang/zh-cn.js" charset="utf-8"></script>
+<script>
+    $('#content').xheditor({
+        html5Upload: false,
+        tools:'full',
+        skin:'default',
+        width:800, height:600,
+        upImgUrl:"<%=host%>upImg",
+        upImgExt:"jpg,jpeg,gif,png"
+    });
+</script>

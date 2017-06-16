@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include public/head.ejs %>
+
+<!--[if lt IE 7 ]>
+<body class="ie ie6"> <![endif]-->
+<!--[if IE 7 ]>
+<body class="ie ie7 "> <![endif]-->
+<!--[if IE 8 ]>
+<body class="ie ie8 "> <![endif]-->
+<!--[if IE 9 ]>
+<body class="ie ie9 "> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<body class="">
+<!--<![endif]-->
+
+<%- include public/navbar.ejs %>
+
+<%- include public/sidebar.ejs %>
+
+
+<div class="content">
+
+    <div class="header">
+
+        <h1 class="page-title">新闻图片</h1>
+    </div>
+
+    <ul class="breadcrumb">
+        <li><a href="index.html">首页</a> <span class="divider">/</span></li>
+        <li class="active">图片</li>
+    </ul>
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+
+            <div class="btn-toolbar">
+                <a href="<%=host%>admin/slider/add" class="btn btn-primary"><i class="icon-plus"></i>添加新闻图片</a>
+                <div class="btn-group">
+                </div>
+            </div>
+            <div class="well">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>标题</th>
+                        <th>描述</th>
+                        <th>图片</th>
+                        <th>链接</th>
+                        <th>添加时间</th>
+                        <th>编辑时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <%for(var i=0;i<list.length;i++){%>
+                            <tr>
+                                <td><%= i%></td>
+                                <td><%=list[i].tittle%></td>
+                                <td><%=list[i].description%></td>
+                                <td><img src="<%= host%><%= list[i].path%>"  style="width: 100px;height: 100px;"></td>
+                                <td><%=list[i].href%></td>
+                                <td><%=list[i].addtime%></td>
+                                <td><%=list[i].edittime%></td>
+                                <td>
+                                    <a href="<%=host%>admin/slider/edit?_id=<%=list[i]._id%>"><i class="icon-pencil"></i></a>
+                                    <a href="<%=host%>admin/slider/remove?_id=<%=list[i]._id%>" role="button" ><i class="icon-remove"></i></a>
+                                </td>
+                            </tr>
+                        <%}%>
+                    </tbody>
+
+                </table>
+            </div>
+            <div class="pagination">
+                <ul>
+                    <li><a href="#">Prev</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include public/end-script.ejs %>
+
+</body>
+</html>
+
+

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ../public/head.ejs %>
+
+<!--[if lt IE 7 ]>
+<body class="ie ie6"> <![endif]-->
+<!--[if IE 7 ]>
+<body class="ie ie7 "> <![endif]-->
+<!--[if IE 8 ]>
+<body class="ie ie8 "> <![endif]-->
+<!--[if IE 9 ]>
+<body class="ie ie9 "> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<body class="">
+<!--<![endif]-->
+
+
+<%- include ../public/navbar.ejs %>
+
+<%- include ../public/sidebar.ejs %>
+
+
+<div class="content">
+
+    <div class="header">
+
+        <h1 class="page-title">编辑文章</h1>
+    </div>
+
+    <ul class="breadcrumb">
+        <li><a href="#">后台主页</a> <span class="divider">/</span></li>
+        <li><a href="#">文章管理</a> <span class="divider">/</span></li>
+        <li class="active">编辑文章</li>
+    </ul>
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+
+            <div class="btn-toolbar">
+                <!--<button class="btn btn-primary"><i class="icon-save"></i> 提交添加</button>-->
+                <!--<a href="#myModal" data-toggle="modal" class="btn">Delete</a>-->
+
+                <div class="btn-group">
+                </div>
+            </div>
+            <div class="well">
+                <!--<ul class="nav nav-tabs">
+                    <li class="active"><a href="#home" data-toggle="tab">基本信息</a></li>
+                    <li><a href="#profile" data-toggle="tab">密码</a></li>
+                </ul>-->
+                <form method="post" action="<%=host%>admin/article/edit/doEdit" >
+                            <label>标题</label>
+                            <input type="hidden" name="id" value="<%=result._id%>">
+                            <input type="text" name="title" value="<%=result.title%>" class="input-xlarge">
+                            <label>作者</label>
+                            <input type="text" name="author" value="<%=result.author%>" class="input-xlarge">
+                            <label>文章分类</label>
+                            <select name="cid" id="cid" class="input-xlarge">
+                                <option value="1">国内新闻</option>
+                                <%for(i=0;i<cate.length;i++){%>
+                                <%if(result.cid==cate[i].id){%>
+                                    <option value="<%=cate[i].id%>" selected><%=cate[i].title%></option>
+                                <%}else{%>
+                                    <option value="<%=cate[i].id%>"><%=cate[i].title%></option>
+                                <%}%>
+                                <%}%>
+                            </select>
+                            <label>作者邮箱</label>
+                            <input type="text" name="email" value="<%=result.email%>" class="input-xlarge">
+                            <label>文章描述</label>
+                            <input type="text" name="description" value="<%=result.description%>" class="input-xlarge">
+                            <label>文章编辑</label>
+                            <textarea  id="content" name="content" cols="120" rows="30">
+                                <%=result.content%>
+                            </textarea>
+                            <br/>
+                            <br/>
+                            <input type="submit" class="btn btn-primary" value="提交">
+                </form>
+
+            </div>
+
+            <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">Delete Confirmation</h3>
+                </div>
+                <div class="modal-body">
+                    <p class="error-text"><i class="icon-warning-sign modal-icon"></i>Are you sure you want to delete
+                        the user?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                    <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+                </div>
+            </div>
+
+
+            <footer>
+                <hr>
+
+                <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+                <p class="pull-right">A <a href="http://www.portnine.com/bootstrap-themes" target="_blank">Free
+                        Bootstrap Theme</a> by <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+
+                <p>&copy; 2012 <a href="http://www.portnine.com" target="_blank">Portnine</a></p>
+            </footer>
+
+        </div>
+    </div>
+</div>
+
+<%- include ../public/xheditor.ejs %>
+<%- include ../public/end-script.ejs %>
+
+</body>
+</html>
+
+
